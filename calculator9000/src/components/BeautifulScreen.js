@@ -1,6 +1,6 @@
 import React from "react";
-import AmazingNumberButton from "./AmazingNumberButton";
-import {useState} from "react";
+import itSOverNineThousand from "./ItSOverNineThousand";
+
 
 export default function BeautifulScreen(props) {
 
