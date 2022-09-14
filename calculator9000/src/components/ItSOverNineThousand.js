@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ItSOverNineThousand = (props) => {
+function ItSOverNineThousand(props) {
 
     if (props.overValue === true) {
         return (
