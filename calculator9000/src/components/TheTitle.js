@@ -1,6 +1,6 @@
 export default function TheTitle() {
     return (
-        <h1>Calculator 9000</h1>
+        <h1 className='title'>Calculator 9000</h1>
     )
 }
 

@@ -3,11 +3,13 @@ import AmazingNumberButton from "./AmazingNumberButton";
 import GreatOperationButton from "./GreatOperationButton";
 import MagnificientEqualButton from "./MagnificientEqualButton";
 import ItSOverNineThousand from "./ItSOverNineThousand";
-import {useState} from "react";
+import SavedOperation from "./SavedOperation";
+import {useEffect, useState} from "react";
+import SavedOperationsContainer from "./SavedOperationsContainer";
 
 export default function Calculator() {
 
-    let [screen, setScreen] = useState('')
+    let [screen, setScreen] = useState('');
     let [over, setOver] = useState(false);
 
     const handleClick = (nbr) => {
@@ -29,13 +31,27 @@ export default function Calculator() {
         }
     };
 
+
+
+    useEffect(() => {
+        const sendDataToBack = async () => {
+
+            const sendValue = await fetch('http://localhost/calculator-9000/calculator9000/src/sendDataToBack.php', {
+                method: 'POST',
+                body: screen
+            })
+        }
+    }, [handleClick])
+
     return (
         <div className='full-screen'>
+            <ItSOverNineThousand overValue={over}/>
             <BeautifulScreen screenValue={screen}/>
             <AmazingNumberButton handleClickParent={handleClick} />
             <GreatOperationButton handleClickParent={handleClick} />
             <MagnificientEqualButton operationValue={screen} handleClickParent={handleResult}/>
-            <ItSOverNineThousand overValue={over}/>
+            <SavedOperation dataToSend={}/>
+            <SavedOperationsContainer />
         </div>
     )
 }
