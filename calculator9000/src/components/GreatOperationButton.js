@@ -11,7 +11,7 @@ function GreatOperationButton(props) {
         <div className='operation'>
             {
                 operations.map((operation, i) =>
-                    <button className='operation-btn' key={i} value={operation} onClick={() => {
+                    <button className='operation-btn' key={i} onClick={() => {
                         operationList = operationList + operation
                         handleClick()
                     }}>
