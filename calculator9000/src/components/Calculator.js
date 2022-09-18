@@ -34,24 +34,11 @@ export default function Calculator() {
         }
     };
 
-    // useEffect(() => {
-    //
-    //     const sendDataToBack = async () => {
-    //
-    //         const sendValue = await axios({
-    //             method: 'post',
-    //             url: 'http://localhost/calculator-9000/calculator9000/src/sendDataToBack.php',
-    //             data: {
-    //                 operations: screen,
-    //                 results: result
-    //             }
-    //         })
-    //     }
-    //
-    //     sendDataToBack()
-    //
-    // }, [handleClickSave])
+    const [saved, setSaved] = useState([])
 
+    const handleClickSave = (data) => {
+        setSaved([data]);
+    }
 
     return (
         <div className='full-screen'>
@@ -60,8 +47,8 @@ export default function Calculator() {
             <AmazingNumberButton handleClickParent={handleClick} />
             <GreatOperationButton handleClickParent={handleClick} />
             <MagnificientEqualButton operationValue={screen} handleClickParent={handleResult} />
-            <SavedOperation sendOperationToBack={screen} sendResultToBack={result}/>
-            <SavedOperationsContainer />
+            <SavedOperation sendOperationToBack={screen} sendResultToBack={result} handleClickParent={handleClickSave}/>
+            <SavedOperationsContainer values={saved}/>
         </div>
     )
 }
